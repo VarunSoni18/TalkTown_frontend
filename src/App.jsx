@@ -14,7 +14,7 @@ function App() {
     <>
       <Routes>
         <Route
-          path="/"
+          path="/"  // homw page route
           element={
             authUser ? (
               // <div className="flex h-screen">

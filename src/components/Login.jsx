@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import Spline from '@splinetool/react-spline';
+
 
 function Login() {
   const [authUser, setAuthUser] = useAuth();
@@ -21,7 +23,7 @@ function Login() {
     };
     // console.log(userInfo);
     axios
-      .post("/api/user/login", userInfo)
+      .post("/api/user/login", userInfo)    // http://localhost:5000  isse issue aaa rha hai 
       .then((response) => {
         if (response.data) {
           toast.success("Login successful");
@@ -31,21 +33,28 @@ function Login() {
       })
       .catch((error) => {
         if (error.response) {
-          toast.error("Error: " + error.response.data.error);
+          toast.error("Error: in Toast part " + error.response.data.error);
         }
       });
   };
+  
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
+   
+    
+      <div className="flex h-screen  bg-stone-100 items-center justify-center">
+        
+           {/* <div className="absolute inset-0 z-0" style={{ transform: "translateX(-25%) translateY(-25%)" }}>
+      <Spline scene="https://prod.spline.design/5Y0JdRocFAt06kLW/scene.splinecode" />
+     </div> */}
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="border border-white px-6 py-2 rounded-md space-y-3 w-96"
+          className=" z-10  realtive border border-stone-300 px-6 py-2 rounded-md space-y-3 w-96 hover:shadow-xl transition-shadow duration-300"
         >
           <h1 className="text-2xl text-center">
-            Chat<span className="text-green-500 font-semibold">App</span>
+            Chat<span className="text-violet-500 font-semibold">App</span>
           </h1>
-          <h2 className="text-xl text-white font-bold">Login</h2>
+          <h2 className="text-xl text-violet-500 font-bold pl-20 ml-12">Login</h2>
           <br />
 
           {/* Email */}
@@ -103,7 +112,7 @@ function Login() {
               New user?
               <Link
                 to="/signup"
-                className="text-blue-500 underline cursor-pointer ml-1"
+                className="text-violet-500 underline cursor-pointer ml-1"
               >
                 Signup
               </Link>
@@ -111,7 +120,7 @@ function Login() {
             <input
               type="submit"
               value="Login"
-              className="text-white bg-green-500 px-2 py-1 cursor-pointer rounded-lg"
+              className="text-white bg-violet-500 px-2 py-1 cursor-pointer rounded-lg"
             />
           </div>
         </form>
@@ -121,3 +130,4 @@ function Login() {
 }
 
 export default Login;
+

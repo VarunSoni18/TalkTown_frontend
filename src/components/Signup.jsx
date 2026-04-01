@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import Spline from '@splinetool/react-spline';
 function Signup() {
   const [authUser, setAuthUser] = useAuth();
   const {
@@ -31,7 +32,8 @@ function Signup() {
     };
     // console.log(userInfo);
     await axios
-      .post("/api/user/signup", userInfo)
+      .post("/api/user/signup", userInfo)   // http://localhost:5000 server running on diferent pots
+      // .post("/api/user/signup", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");
@@ -41,21 +43,26 @@ function Signup() {
       })
       .catch((error) => {
         if (error.response) {
-          toast.error("Error: " + error.response.data.error);
+          toast.error("Error:  in toast part" + error.response.data.error);
         }
       });
   };
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
+      <div className="flex h-screen items-center justify-center bg-stone-100">
+      
+         {/* <div className="absolute inset-0 z-0" style={{ transform: "translateX(-25%) translateY(-25%)" }}>
+              <Spline scene="https://prod.spline.design/5Y0JdRocFAt06kLW/scene.splinecode" />
+             </div> */} 
+
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="border border-white px-6 py-2 rounded-md space-y-3 w-96"
+          className="  z-10  realtive border border-stone-300 px-6 py-2 rounded-md space-y-3 w-96 hover:shadow-xl transition-shadow duration-300"
         >
           <h1 className="text-2xl text-center">
-            Chat<span className="text-green-500 font-semibold">App</span>
+            Chat<span className="text-violet-500 font-semibold">App</span>
           </h1>
-          <h2 className="text-xl text-white font-bold">Signup</h2>
+          <h2 className="text-xl text-violet-500  font-bold pl-20 ml-12">Signup</h2>
           <br />
           {/* Fullname */}
           <label className="input input-bordered flex items-center gap-2">
@@ -166,7 +173,7 @@ function Signup() {
               Have an account?
               <Link
                 to="/login"
-                className="text-blue-500 underline cursor-pointer ml-1"
+                className="text-violet-500 underline cursor-pointer ml-1"
               >
                 Login
               </Link>
@@ -174,7 +181,7 @@ function Signup() {
             <input
               type="submit"
               value="Signup"
-              className="text-white bg-green-500 px-2 py-1 cursor-pointer rounded-lg"
+              className="text-white bg-violet-500 px-2 py-1 cursor-pointer rounded-lg"
             />
           </div>
         </form>

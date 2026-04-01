@@ -5,6 +5,7 @@ import Typesend from "./Typesend";
 import useConversation from "../../zustand/useConversation.js";
 import { useAuth } from "../../context/AuthProvider.jsx";
 import { CiMenuFries } from "react-icons/ci";
+import profile from "../../../public/v852-katie-42.jpg";
 
 function Right() {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -12,8 +13,18 @@ function Right() {
     return setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (
-    <div className="w-full bg-slate-900 text-gray-300">
-      <div>
+    <div className="w-full bg-gray-900 text-gray-300"
+      style={{
+        backgroundImage: `url(${profile})`,
+        backgroundSize: "cover",
+
+        backgroundPosition: "center 15%",
+        backgroundRepeat: "no-repeat",
+
+      }}
+    >
+
+      < div >
         {!selectedConversation ? (
           <NoChatSelected />
         ) : (
@@ -27,9 +38,10 @@ function Right() {
             </div>
             <Typesend />
           </>
-        )}
-      </div>
-    </div>
+        )
+        }
+      </div >
+    </div >
   );
 }
 
@@ -48,7 +60,7 @@ const NoChatSelected = () => {
           <CiMenuFries className="text-white text-xl" />
         </label>
         <div className="flex h-screen items-center justify-center">
-          <h1 className="text-center">
+          <h1 className="text-center text-black" >
             Welcome{" "}
             <span className="font-semibold text-xl">
               {authUser.user.fullname}

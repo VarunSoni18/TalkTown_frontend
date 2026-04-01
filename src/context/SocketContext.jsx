@@ -4,7 +4,7 @@ import io from "socket.io-client";
 const socketContext = createContext();
 
 // it is a hook.
-export const useSocketContext = () => {
+export const useSocketContext = () => {  // a hook is created
   return useContext(socketContext);
 };
 

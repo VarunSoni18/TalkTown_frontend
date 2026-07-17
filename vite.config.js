@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3001,
     proxy: {
       "/api": {
-        target: "http://localhost:4002",   // 4002 ko change krke 5000 kiya hia
+        target: "https://talktown-backend.onrender.com",   // 4002 ko change krke 5000 kiya hia
         changeOrigin: true,
       },
     },

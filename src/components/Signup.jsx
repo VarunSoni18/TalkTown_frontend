@@ -1,10 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Spline from '@splinetool/react-spline';
+import axiosInstance from "../utils/axiosIntance";
 function Signup() {
   const [authUser, setAuthUser] = useAuth();
   const {
@@ -31,7 +33,7 @@ function Signup() {
       confirmPassword: data.confirmPassword,
     };
     // console.log(userInfo);
-    await axios
+    await axiosInstance
       .post("/api/user/signup", userInfo)   // http://localhost:5000 server running on diferent pots
       // .post("/api/user/signup", userInfo)
       .then((response) => {

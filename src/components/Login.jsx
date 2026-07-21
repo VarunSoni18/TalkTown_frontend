@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Spline from '@splinetool/react-spline';
+import axiosInstance from "../utils/axiosIntance";
 
 
 function Login() {
@@ -22,7 +23,7 @@ function Login() {
       password: data.password,
     };
     // console.log(userInfo);
-    axios
+    axiosInstance
       .post("/api/user/login", userInfo)    // http://localhost:5000  isse issue aaa rha hai 
       .then((response) => {
         if (response.data) {

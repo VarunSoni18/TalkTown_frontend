@@ -19,6 +19,7 @@ export const SocketProvider = ({ children }) => {
         query: {
           userId: authUser.user._id,
         },
+         withCredentials: true,
       });
       setSocket(socket);
       socket.on("getOnlineUsers", (users) => {

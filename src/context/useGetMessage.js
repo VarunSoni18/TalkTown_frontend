@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useConversation from "../zustand/useConversation.js";
 import axios from "axios";
+import axiosInstance from "../utils/axiosIntance.js";
 const useGetMessage = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessage, selectedConversation } = useConversation();
@@ -10,7 +11,7 @@ const useGetMessage = () => {
       setLoading(true);
       if (selectedConversation && selectedConversation._id) {
         try {
-          const res = await axios.get(
+          const res = await axiosInstance.get(
             `/api/message/get/${selectedConversation._id}`
           );
           setMessage(res.data);

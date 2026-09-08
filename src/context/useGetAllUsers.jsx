@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import axiosInstance from "../utils/axiosIntance";
 function useGetAllUsers() {
   const [allUsers, setAllUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,7 @@ function useGetAllUsers() {
       setLoading(true);
       try {
         const token = Cookies.get("jwt");
-        const response = await axios.get("/api/user/allusers", {    // yha bhi ek error aa tha  hai isko solve krna haai  http local host wala  and video me yha se api bhi hta diya
+        const response = await axiosInstance.get("/api/user/allusers", {    // yha bhi ek error aa tha  hai isko solve krna haai  http local host wala  and video me yha se api bhi hta diya
           credentials: "include",
           headers: {
             Authorization: `Bearer ${token}`,

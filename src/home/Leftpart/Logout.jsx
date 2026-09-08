@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { BiLogOutCircle } from "react-icons/bi";
 import axios from "axios";
+import axiosInstance from "../../utils/axiosIntance";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 function Logout() {
@@ -9,7 +10,7 @@ function Logout() {
   const handleLogout = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("/api/user/logout"); //http://localhost:5000 isme changes krne hai 
+      const res = await axiosInstance.post("/api/user/logout"); //http://localhost:5000 isme changes krne hai 
       localStorage.removeItem("ChatApp");
       Cookies.remove("jwt");
       setLoading(false);  // alert vala code add krna hai
